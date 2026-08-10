@@ -1,9 +1,0 @@
-{
-  "name":"MapRoute Pro",
-  "short_name":"MapRoute",
-  "start_url":"./index.html",
-  "display":"standalone",
-  "background_color":"#f4f7fb",
-  "theme_color":"#1769e0",
-  "icons":[]
-}
