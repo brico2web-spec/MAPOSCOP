@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#1769e0">
+<title>MapRoute Pro</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">⌖</span><div><b>MapRoute Pro</b><small>Multi‑Stop Route Planner</small></div></div>
+  <button id="locateBtn" class="iconBtn">◎ موقعي</button>
+</header>
+
+<main>
+<section class="panel">
+  <div class="tabs">
+    <button class="tab active" data-tab="stops">المحطات</button>
+    <button class="tab" data-tab="route">المسار</button>
+    <button class="tab" data-tab="settings">الإعدادات</button>
+  </div>
+
+  <div id="stopsTab" class="tabContent active">
+    <div class="toolbar">
+      <button id="addBtn" class="primary">＋ إضافة محطة</button>
+      <button id="importBtn">📄 استيراد Excel/CSV</button>
+      <input id="fileInput" type="file" accept=".xlsx,.xls,.csv" hidden>
+    </div>
+    <div class="hint">أضف الزبائن أو العناوين، ثم اضغط «تحسين المسار» لترتيبها.</div>
+    <div id="stopsList"></div>
+    <div class="bottomActions">
+      <button id="optimizeBtn" class="optimize">⚡ تحسين المسار</button>
+      <button id="clearBtn" class="danger">مسح الكل</button>
+    </div>
+  </div>
+
+  <div id="routeTab" class="tabContent">
+    <div class="stats">
+      <div><b id="stopCount">0</b><span>محطة</span></div>
+      <div><b id="distance">0 km</b><span>المسافة</span></div>
+      <div><b id="duration">0 min</b><span>المدة</span></div>
+    </div>
+    <button id="startRouteBtn" class="primary wide">▶ بدء المسار</button>
+    <div id="routeOrder" class="routeOrder"></div>
+  </div>
+
+  <div id="settingsTab" class="tabContent">
+    <label>نوع المركبة</label>
+    <select id="vehicle">
+      <option value="car">🚗 سيارة</option>
+      <option value="bike">🚲 دراجة</option>
+    </select>
+    <label>نقطة الانطلاق</label>
+    <select id="startMode">
+      <option value="current">موقعي الحالي</option>
+      <option value="first">أول محطة</option>
+    </select>
+    <p class="small">الخرائط والمسارات تعتمد على خدمات OpenStreetMap/OSRM عند توفر الإنترنت.</p>
+  </div>
+</section>
+
+<section class="mapWrap">
+  <div id="map"></div>
+  <div class="mapCard">
+    <b>المسار الحالي</b>
+    <span id="mapStatus">أضف محطات للبدء</span>
+  </div>
+</section>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modalBox">
+    <button id="closeModal" class="close">×</button>
+    <h2>إضافة محطة</h2>
+    <label>اسم الزبون / المحطة</label>
+    <input id="nameInput" placeholder="مثال: بقالة الأمل">
+    <label>العنوان</label>
+    <input id="addressInput" placeholder="مثال: القنيطرة، المغرب">
+    <label>ملاحظات</label>
+    <textarea id="notesInput" placeholder="وقت الزيارة، رقم الهاتف..."></textarea>
+    <div class="row">
+      <button id="saveStop" class="primary">حفظ</button>
+      <button id="cancelStop">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
