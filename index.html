@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe Bahia - Ahmed TOUR | Location de Voitures</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Groupe Bahia</h1>
+                <p class="tagline">Ahmed TOUR - Location de Voitures</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#voitures">Nos Voitures</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h2>Louez votre voiture facilement</h2>
+            <p>Groupe Bahia - Ahmed TOUR - Service de location automobile de qualité à Kénitra</p>
+            <button class="btn btn-primary" onclick="document.querySelector('#reservation').scrollIntoView({behavior: 'smooth'})">Réserver maintenant</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Location de Voitures</h3>
+                    <p>Large gamme de véhicules modernes et bien entretenus</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💱</div>
+                    <h3>Change de Monnaie</h3>
+                    <p>Service BAHIA CHANGE - Change de monnaie RHIATI SALIH Anas</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Assurance Complète</h3>
+                    <p>Protection et assurance complète pour votre tranquillité</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⏰</div>
+                    <h3>Disponibilité 24/7</h3>
+                    <p>Service clientèle disponible 7 jours sur 7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Gallery -->
+    <section id="voitures" class="cars-section">
+        <div class="container">
+            <h2>Nos Véhicules</h2>
+            <div class="cars-grid" id="carsGrid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Form -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <h2>Formulaire de Réservation</h2>
+            <form class="reservation-form" id="reservationForm">
+                <div class="form-group">
+                    <label for="name">Nom Complet</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkIn">Date de Départ</label>
+                        <input type="date" id="checkIn" name="checkIn" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkOut">Date de Retour</label>
+                        <input type="date" id="checkOut" name="checkOut" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="carType">Type de Véhicule</label>
+                    <select id="carType" name="carType" required>
+                        <option value="">Sélectionnez un véhicule</option>
+                        <option value="economique">Économique</option>
+                        <option value="confort">Confort</option>
+                        <option value="premium">Premium</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message Spécial (optionnel)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Soumettre la Réservation</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Téléphone</h3>
+                    <p>Mobile: <a href="tel:+212661170182">06 61 17 01 82</a></p>
+                    <p>Fixe: <a href="tel:+212537378889">05 37 37 88 89</a></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p><a href="mailto:ahmadi2011@live.fr">ahmadi2011@live.fr</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📍 Adresse</h3>
+                    <p>Angle Av. Imam Ali & Rue Yarik Ziad</p>
+                    <p>Imm N°10 Mag N°4 (en face de la mosquée chaabi)</p>
+                    <p>Kénitra - Maroc</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Groupe Bahia - Ahmed TOUR. Tous droits réservés.</p>
+            <p>Location de Voitures | Change de Monnaie | Service Premium</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
