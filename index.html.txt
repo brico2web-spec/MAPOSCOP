@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed TOUR - Groupe Bahia | Location de Voitures</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="logo-svg" viewBox="0 0 100 60" fill="none">
+                <path d="M5 45 Q25 5 50 15 Q75 5 95 45" stroke="white" stroke-width="3" fill="none"/>
+                <path d="M5 45 Q25 5 50 15 Q75 5 95 45" stroke="#dc2626" stroke-width="1.5" fill="none" transform="translate(0,2)"/>
+                <circle cx="25" cy="45" r="8" fill="none" stroke="#dc2626" stroke-width="2"/>
+                <circle cx="75" cy="45" r="8" fill="none" stroke="#dc2626" stroke-width="2"/>
+            </svg>
+            <div>
+                <h1><span class="text-red">Groupe</span> Bahia</h1>
+                <p class="subtitle">AHMED TOUR</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#accueil">الرئيسية</a>
+            <a href="#vehicules">المركبات</a>
+            <a href="#tarifs">الأسعار</a>
+            <a href="#contact">اتصل بنا</a>
+        </div>
+        <a href="tel:0661170182" class="btn-primary">📞 احجز الآن</a>
+    </nav>
+
+    <!-- Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">🚗 Location de Voitures - Kénitra</span>
+            <h2>أحمد تور<br><span class="gradient-text">لتأجير السيارات</span></h2>
+            <p>أفضل أسعار تأجير السيارات في كénitra. أسطول حديث، خدمة احترافية، وتوصيل مجاني.</p>
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('vehicules')" class="btn-primary btn-large">استكشف المركبات</button>
+                <button onclick="scrollToSection('contact')" class="btn-outline btn-large">تواصل معنا</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container grid-3">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>أفضل الأسعار</h3>
+                <p>أسعار تنافسية وشفافة بدون رسوم خفية</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>أسطول حديث</h3>
+                <p>سيارات جديدة ومجهزة بأحدث التقنيات</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>خدمة 24/7</h3>
+                <p>متاحون على مدار الساعة لخدمتكم</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicles -->
+    <section id="vehicules" class="vehicles">
+        <div class="container">
+            <div class="section-header">
+                <h2>أسطول المركبات</h2>
+                <p>اختر السيارة المناسبة لاحتياجاتك</p>
+            </div>
+            <div class="grid-3" id="cars-grid"></div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="tarifs" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>أسعار التأجير</h2>
+                <p>أسعار تبدأ من 250 درهم/يوم</p>
+            </div>
+            <div class="grid-3">
+                <div class="pricing-card">
+                    <h3>اقتصادية</h3>
+                    <div class="price">250 <span>درهم/يوم</span></div>
+                    <ul>
+                        <li>✓ تأمين شامل</li>
+                        <li>✓ مسافة غير محدودة</li>
+                        <li>✓ خدمة التوصيل</li>
+                        <li>✓ دعم على مدار الساعة</li>
+                    </ul>
+                    <button onclick="openReserve('اقتصادية')" class="btn-secondary">احجز الآن</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="badge-popular">الأكثر طلباً</div>
+                    <h3>عائلية</h3>
+                    <div class="price">450 <span>درهم/يوم</span></div>
+                    <ul>
+                        <li>✓ تأمين شامل</li>
+                        <li>✓ مسافة غير محدودة</li>
+                        <li>✓ خدمة التوصيل المجاني</li>
+                        <li>✓ مقعد أطفال مجاني</li>
+                        <li>✓ دعم على مدار الساعة</li>
+                    </ul>
+                    <button onclick="openReserve('عائلية')" class="btn-primary">احجز الآن</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>فاخرة</h3>
+                    <div class="price">800 <span>درهم/يوم</span></div>
+                    <ul>
+                        <li>✓ تأمين شامل</li>
+                        <li>✓ مسافة غير محدودة</li>
+                        <li>✓ سائق خاص (اختياري)</li>
+                        <li>✓ دعم VIP</li>
+                    </ul>
+                    <button onclick="openReserve('فاخرة')" class="btn-secondary">احجز الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>اتصل بنا</h2>
+                <p>نحن هنا لمساعدتك في أي وقت</p>
+            </div>
+            <div class="grid-2">
+                <div class="contact-info">
+                    <h3>معلومات التواصل</h3>
+                    <div class="info-item">
+                        <span class="icon">📱</span>
+                        <div><small>الهاتف</small><strong>06 61 17 01 82</strong></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">☎️</span>
+                        <div><small>الهاتف الثابت</small><strong>05 37 37 88 89</strong></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">✉️</span>
+                        <div><small>البريد الإلكتروني</small><strong>ahmadi2011@live.fr</strong></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📍</span>
+                        <div><small>العنوان</small><strong>زاوية شارع الإمام علي وشارع ياريك زياد - كénitra</strong></div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>أرسل رسالة</h3>
+                    <form onsubmit="handleSubmit(event)">
+                        <input type="text" placeholder="الاسم الكامل" required>
+                        <input type="tel" placeholder="رقم الهاتف" required>
+                        <textarea placeholder="رسالتك..." rows="4" required></textarea>
+                        <button type="submit" class="btn-primary">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <svg class="logo-svg-small" viewBox="0 0 100 60" fill="none">
+                    <path d="M5 45 Q25 5 50 15 Q75 5 95 45" stroke="white" stroke-width="3" fill="none"/>
+                    <circle cx="25" cy="45" r="8" fill="none" stroke="#dc2626" stroke-width="2"/>
+                    <circle cx="75" cy="45" r="8" fill="none" stroke="#dc2626" stroke-width="2"/>
+                </svg>
+                <div>
+                    <p><span class="text-red">Groupe</span> Bahia - Ahmed TOUR</p>
+                    <small>Location de Voitures - Kénitra</small>
+                </div>
+            </div>
+            <p class="copyright">© 2026 جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="reserve-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>حجز سيارة</h3>
+                <button onclick="closeModal()" class="close-btn">&times;</button>
+            </div>
+            <form onsubmit="handleReserve(event)">
+                <input type="text" id="car-type" readonly>
+                <input type="text" placeholder="الاسم الكامل" required>
+                <input type="tel" placeholder="رقم الهاتف" required>
+                <div class="grid-2">
+                    <input type="date" required>
+                    <input type="date" required>
+                </div>
+                <button type="submit" class="btn-primary">تأكيد الحجز</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">تم إرسال طلبك بنجاح!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
