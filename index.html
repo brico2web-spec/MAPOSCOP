@@ -1,0 +1,864 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+    <title>مختبر المغرب العربي للتحاليل الطبية</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- Google Fonts (Arabic + Latin) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET ---------- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            background: #e8edf3;
+            color: #1a3040;
+            line-height: 1.7;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s, color 0.4s;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ---------- DARK MODE ---------- */
+        body.dark-mode {
+            background: #121c28;
+            color: #dce6ef;
+        }
+        body.dark-mode .main-card {
+            background: rgba(25, 40, 55, 0.92);
+            border-color: rgba(255,255,255,0.06);
+        }
+        body.dark-mode .panel:not(:last-child) { border-bottom-color: rgba(255,255,255,0.05); }
+        body.dark-mode .intro { background: linear-gradient(145deg, #1a2d3f 0%, #12222f 100%); }
+        body.dark-mode .intro .brand h1 { color: #e8edf3; }
+        body.dark-mode .intro .brand h1 span { color: #d4b68a; }
+        body.dark-mode .intro .brand .subhead { color: #b8cfdf; }
+        body.dark-mode .intro .brand .doctor-badge {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(201,168,108,0.2);
+            color: #d4e2ed;
+        }
+        body.dark-mode .intro .brand .meta-info {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.06);
+        }
+        body.dark-mode .intro .brand .meta-info span { color: #c8dae7; }
+        body.dark-mode .intro .brand .meta-info i { color: #d4b68a; }
+        body.dark-mode .intro .brand p { background: rgba(255,255,255,0.04) !important; color: #c8dae7 !important; border-color: rgba(201,168,108,0.1) !important; }
+        body.dark-mode .intro .logo-area { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.05); }
+        body.dark-mode .intro .logo-area .lab-name { color: #b8cfdf; }
+        body.dark-mode .section-title h2 { color: #e8edf3; }
+        body.dark-mode .work-grid .service-item {
+            background: #1a2d3f;
+            border-color: #2a4055;
+            color: #d4e2ed;
+        }
+        body.dark-mode .work-grid .service-item:hover {
+            border-color: #d4b68a;
+            background: #1f3549;
+            box-shadow: 0 16px 35px rgba(0,0,0,0.3);
+        }
+        body.dark-mode .work-grid .service-item i { color: #b8cfdf; }
+        body.dark-mode .work-grid .service-item span { color: #e0eaf2; }
+        body.dark-mode .work-grid .service-item .sub { color: #8aaec9; }
+        body.dark-mode form input, body.dark-mode form textarea {
+            background: #1a2d3f;
+            border-color: #2a4055;
+            color: #dce6ef;
+        }
+        body.dark-mode form input:focus, body.dark-mode form textarea:focus {
+            border-color: #d4b68a;
+            background: #1f3549;
+            box-shadow: 0 0 0 4px rgba(212, 182, 138, 0.08);
+        }
+        body.dark-mode .info-side .contact-card {
+            background: #1a2d3f;
+            border-color: rgba(212, 182, 138, 0.12);
+        }
+        body.dark-mode .info-side .contact-card p { color: #c8dae7; }
+        body.dark-mode .info-side .contact-card i { color: #d4b68a; }
+        body.dark-mode .btn { background: #2a4055; color: #f0f5fa; }
+        body.dark-mode .btn:hover { background: #3a5a75; }
+        body.dark-mode #footer { border-top-color: rgba(255,255,255,0.05); color: #8aaec9; }
+        body.dark-mode #footer a { color: #b8cfdf; }
+        body.dark-mode #nav a { color: #b8cfdf; }
+        body.dark-mode #nav a i { color: #7f9bb5; }
+        body.dark-mode #nav a.active { background: #2a4055; color: #f0f5fa; }
+        body.dark-mode #nav a.active i { color: #d4b68a; }
+        body.dark-mode #nav { border-bottom-color: rgba(255,255,255,0.05); }
+        body.dark-mode .top-bar { border-bottom-color: rgba(255,255,255,0.05); }
+        body.dark-mode .top-bar .brand-tag { color: #b8cfdf; }
+        body.dark-mode .top-bar .actions button {
+            border-color: rgba(255,255,255,0.08);
+            color: #b8cfdf;
+        }
+        body.dark-mode .top-bar .actions button:hover {
+            background: rgba(255,255,255,0.04);
+        }
+        body.dark-mode .top-bar .actions button.active-lang {
+            background: #d4b68a;
+            color: #1a2a3a;
+            border-color: #d4b68a;
+        }
+        body.dark-mode .design-credit { opacity: 0.25; }
+
+        /* ---------- WRAPPER & CARD ---------- */
+        #wrapper {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .main-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 30px 80px rgba(18, 45, 70, 0.12), 0 10px 30px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: background 0.4s, border-color 0.4s;
+        }
+
+        /* ---------- TOP BAR: brand + language + dark mode (compact) ---------- */
+        .top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 2rem 0.3rem;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(26, 75, 109, 0.05);
+            transition: border-color 0.4s;
+        }
+        .top-bar .brand-tag {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #1a4b6d;
+            letter-spacing: 0.3px;
+        }
+        .top-bar .actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .top-bar .actions button {
+            background: transparent;
+            border: 1px solid rgba(26, 75, 109, 0.1);
+            border-radius: 30px;
+            padding: 0.15rem 0.6rem;
+            font-family: inherit;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1a4b6d;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            font-weight: 500;
+            line-height: 1.6;
+            min-height: 24px;
+        }
+        .top-bar .actions button i { font-size: 0.65rem; }
+        .top-bar .actions button:hover {
+            background: rgba(26, 75, 109, 0.06);
+        }
+        .top-bar .actions button.active-lang {
+            background: #1a4b6d;
+            color: #fff;
+            border-color: #1a4b6d;
+        }
+        .top-bar .actions .dark-toggle {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            min-height: 24px;
+        }
+        .top-bar .actions .dark-toggle i { font-size: 0.7rem; }
+
+        /* ---------- NAV ---------- */
+        #nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem 0.5rem;
+            padding: 0.3rem 2rem 0.6rem;
+            background: transparent;
+            border-bottom: 1px solid rgba(26, 75, 109, 0.06);
+            transition: border-color 0.4s;
+        }
+        #nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 1rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #1a4b6d;
+            background: transparent;
+            transition: 0.25s;
+            opacity: 0.7;
+            letter-spacing: 0.2px;
+        }
+        #nav a i { font-size: 0.95rem; color: #8aaec9; transition: 0.25s; }
+        #nav a:hover { opacity: 1; background: rgba(26, 75, 109, 0.06); }
+        #nav a:hover i { color: #1a4b6d; }
+        #nav a.active {
+            opacity: 1;
+            background: #1a2a3a;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(26, 42, 58, 0.15);
+        }
+        #nav a.active i { color: #f0e6d0; }
+
+        /* ---------- PANELS ---------- */
+        .panel {
+            padding: 2rem 2.5rem;
+            transition: 0.25s ease;
+            display: block;
+        }
+        .panel:not(:last-child) { border-bottom: 1px solid rgba(26, 75, 109, 0.05); }
+
+        /* ---------- INTRO (HOME) ---------- */
+        .intro {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem 2.5rem 2rem;
+            background: linear-gradient(145deg, #f5faff 0%, #eaf1f9 100%);
+            transition: background 0.4s;
+        }
+        .intro .brand { flex: 2; min-width: 240px; }
+        .intro .brand h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0b2a3b;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            transition: color 0.4s;
+        }
+        .intro .brand h1 span { color: #c9a86c; }
+        .intro .brand .subhead {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #1a4b6d;
+            border-right: 4px solid #c9a86c;
+            padding-right: 1rem;
+            margin: 0.2rem 0 1rem;
+            transition: color 0.4s, border-color 0.4s;
+        }
+        .intro .brand .doctor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(26, 75, 109, 0.06);
+            border: 1px solid rgba(201, 168, 108, 0.2);
+            padding: 0.3rem 1.4rem 0.3rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 400;
+            color: #1a3b52;
+            font-size: 0.95rem;
+            transition: background 0.4s, border-color 0.4s, color 0.4s;
+        }
+        .intro .brand .doctor-badge i { color: #c9a86c; font-size: 1.1rem; }
+        .intro .brand .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.4rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(255,255,255,0.8);
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.8);
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .intro .brand .meta-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #1a3b52;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: color 0.4s;
+        }
+        .intro .brand .meta-info i { color: #c9a86c; width: 1.2rem; font-size: 0.95rem; }
+        .intro .brand .edu-badge {
+            margin-top: 1rem;
+            color: #1a3b52;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.7);
+            padding: 0.4rem 1.4rem;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(201,168,108,0.15);
+            transition: background 0.4s, color 0.4s, border-color 0.4s;
+        }
+        .intro .brand .edu-badge i { color: #c9a86c; }
+
+        .intro .logo-area {
+            flex: 1;
+            min-width: 130px;
+            text-align: center;
+            background: rgba(255,255,255,0.5);
+            border-radius: 100px 100px 100px 20px;
+            padding: 0.8rem 0.6rem 0.6rem;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.7);
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .intro .logo-area img {
+            width: 100%;
+            max-width: 150px;
+            margin: 0 auto;
+            border-radius: 50px 50px 50px 10px;
+            box-shadow: 0 6px 20px rgba(26, 75, 109, 0.06);
+        }
+        .intro .logo-area .lab-name {
+            font-weight: 700;
+            color: #1a4b6d;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            transition: color 0.4s;
+        }
+
+        /* ---------- SECTION TITLE ---------- */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .section-title i { color: #c9a86c; font-size: 1.6rem; }
+        .section-title h2 { font-weight: 700; color: #0b2a3b; font-size: 1.6rem; transition: color 0.4s; }
+
+        /* ---------- WORK / SERVICES GRID ---------- */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 1rem;
+            margin: 1.2rem 0 0.3rem;
+        }
+        .work-grid .service-item {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1rem 0.4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid #e6eef6;
+            transition: 0.25s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+            aspect-ratio: 1/1;
+        }
+        .work-grid .service-item:hover {
+            transform: translateY(-4px);
+            border-color: #c9a86c;
+            box-shadow: 0 12px 30px rgba(26, 75, 109, 0.06);
+            background: #fafdff;
+        }
+        .work-grid .service-item i {
+            font-size: 2.2rem;
+            color: #1a4b6d;
+            margin-bottom: 0.2rem;
+            opacity: 0.85;
+            transition: color 0.4s;
+        }
+        .work-grid .service-item span {
+            font-weight: 500;
+            color: #1a3b52;
+            font-size: 0.85rem;
+            transition: color 0.4s;
+        }
+        .work-grid .service-item .sub {
+            font-size: 0.65rem;
+            color: #7f9bb5;
+            font-weight: 300;
+            transition: color 0.4s;
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.3rem;
+        }
+        .contact-flex form { flex: 2; min-width: 240px; }
+        .contact-flex .info-side { flex: 1; min-width: 160px; }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid #dce5ef;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            background: #f9fcff;
+            transition: 0.2s, background 0.4s, border-color 0.4s, color 0.4s;
+            outline: none;
+            color: #1a3040;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #1a4b6d;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(26, 75, 109, 0.05);
+        }
+        form textarea { border-radius: 24px; resize: vertical; min-height: 100px; }
+        .btn {
+            background: #1a2a3a;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s, background 0.4s, color 0.4s;
+            box-shadow: 0 6px 18px rgba(26, 42, 58, 0.1);
+        }
+        .btn:hover { transform: scale(1.02); }
+        .btn i { color: #f0e6d0; }
+
+        .info-side .contact-card {
+            background: #f5faff;
+            padding: 1.2rem 1.4rem;
+            border-radius: 28px;
+            border: 1px solid rgba(201, 168, 108, 0.12);
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .info-side .contact-card p {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.5rem 0;
+            color: #1a3b52;
+            font-size: 0.9rem;
+            transition: color 0.4s;
+        }
+        .info-side .contact-card i { color: #c9a86c; width: 1.4rem; font-size: 1rem; }
+
+        /* ---------- FOOTER ---------- */
+        #footer {
+            text-align: center;
+            padding: 1.2rem 0.5rem 0.6rem;
+            color: #5f7f98;
+            font-weight: 300;
+            border-top: 1px solid rgba(26, 75, 109, 0.06);
+            margin-top: 0.3rem;
+            transition: color 0.4s, border-color 0.4s;
+            font-size: 0.85rem;
+        }
+        #footer .copyright {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 1.5rem;
+        }
+        #footer a { color: #1a4b6d; font-weight: 400; transition: color 0.4s; }
+        #footer a:hover { color: #c9a86c; }
+        .design-credit {
+            font-size: 0.6rem;
+            opacity: 0.35;
+            letter-spacing: 0.5px;
+            margin-top: 0.1rem;
+            transition: opacity 0.4s;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media screen and (max-width: 800px) {
+            body { padding: 0.8rem; }
+            .main-card { border-radius: 28px; }
+            .panel { padding: 1.5rem; }
+            .intro { flex-direction: column-reverse; text-align: center; padding: 1.5rem; }
+            .intro .brand h1 { font-size: 2.2rem; }
+            .intro .brand .subhead { border-right: none; padding-right: 0; }
+            .intro .brand .meta-info { justify-content: center; }
+            #nav a { font-size: 0.8rem; padding: 0.25rem 0.8rem; }
+            .work-grid { grid-template-columns: repeat(auto-fill, minmax(110px,1fr)); }
+            .top-bar { flex-direction: column; align-items: stretch; gap: 0.2rem; }
+            .top-bar .actions { justify-content: center; }
+        }
+        @media screen and (max-width: 480px) {
+            .intro .brand h1 { font-size: 1.8rem; }
+            .intro .brand .meta-info span { font-size: 0.75rem; }
+            .btn { width: 100%; justify-content: center; font-size: 0.85rem; }
+            .top-bar .actions button { font-size: 0.6rem; padding: 0.1rem 0.4rem; min-height: 20px; }
+            .top-bar .actions button i { font-size: 0.55rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <div class="main-card">
+
+        <!-- TOP BAR: Brand + Language + Dark Mode (compact, elegant) -->
+        <div class="top-bar">
+            <span class="brand-tag"><i class="fas fa-flask" style="color: #c9a86c;"></i> MAGHREBLAB</span>
+            <div class="actions">
+                <button class="lang-btn active-lang" data-lang="ar" title="العربية"><i class="fas fa-language"></i> ع</button>
+                <button class="lang-btn" data-lang="fr" title="Français"><i class="fas fa-language"></i> FR</button>
+                <button class="lang-btn" data-lang="en" title="English"><i class="fas fa-language"></i> EN</button>
+                <button class="dark-toggle" id="darkModeToggle" title="تبديل الوضع الليلي"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+
+        <!-- NAV -->
+        <nav id="nav">
+            <a href="#home" class="active"><i class="fas fa-home"></i> <span data-i18n="nav-home">الرئيسية</span></a>
+            <a href="#work"><i class="fas fa-flask"></i> <span data-i18n="nav-services">الخدمات</span></a>
+            <a href="#contact"><i class="fas fa-envelope"></i> <span data-i18n="nav-contact">اتصل بنا</span></a>
+            <a href="#"><i class="fab fa-twitter"></i> <span>Twitter</span></a>
+        </nav>
+
+        <!-- MAIN -->
+        <div id="main">
+
+            <!-- HOME -->
+            <article id="home" class="panel intro">
+                <div class="brand">
+                    <h1 data-i18n="home-title">مختبر <span>المغرب العربي</span></h1>
+                    <div class="subhead" data-i18n="home-subhead">للتحاليل الطبية · Laboratoire Maghreb Arabi</div>
+                    <div class="doctor-badge">
+                        <i class="fas fa-user-md"></i> <span data-i18n="home-doctor">د. عاصم الزاكي – اختصاصي البيولوجيا</span>
+                    </div>
+                    <div class="meta-info">
+                        <span><i class="fas fa-phone-alt"></i> 05 37 35 14 13</span>
+                        <span><i class="fas fa-mobile-alt"></i> 07 08 08 99 60</span>
+                        <span><i class="fas fa-envelope"></i> labomaghrebrababi@gmail.com</span>
+                    </div>
+                    <div class="edu-badge">
+                        <i class="fas fa-graduation-cap" style="color: #c9a86c;"></i> 
+                        <span data-i18n="home-education">خريج كلية الطب والصيدلة بالرباط – داخلي سابق بالمستشفى العسكري محمد الخامس</span>
+                    </div>
+                </div>
+                <div class="logo-area">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%231a4b6d'/%3E%3Ctext x='32' y='88' font-family='Tajawal, sans-serif' font-size='34' fill='%23f0e6d0' font-weight='bold'%3Eمختبر%3C/text%3E%3Ctext x='20' y='140' font-family='Tajawal, sans-serif' font-size='28' fill='%23d4b68a'%3Eالمغرب العربي%3C/text%3E%3C/svg%3E"
+                         alt="شعار مختبر المغرب العربي" />
+                    <div class="lab-name">MAGHREBLAB · مغرب الراب</div>
+                </div>
+            </article>
+
+            <!-- WORK / SERVICES -->
+            <article id="work" class="panel">
+                <div class="section-title">
+                    <i class="fas fa-microscope"></i>
+                    <h2 data-i18n="services-title">خدمات التحاليل الطبية</h2>
+                </div>
+                <p style="color: #3a5a72; margin-bottom: 1.2rem; font-size: 0.95rem; transition: color 0.4s;" data-i18n="services-desc">دقة عالية – نتائج موثوقة – تحت إشراف الدكتور عاصم الزاكي</p>
+                <div class="work-grid">
+                    <div class="service-item"><i class="fas fa-tint"></i><span data-i18n="srv-1">التحاليل الدموية</span><span class="sub">CBC, Ferritine</span></div>
+                    <div class="service-item"><i class="fas fa-biohazard"></i><span data-i18n="srv-2">البيولوجيا الجزيئية</span><span class="sub">PCR, Électrophorèse</span></div>
+                    <div class="service-item"><i class="fas fa-vial"></i><span data-i18n="srv-3">الهرمونات</span><span class="sub">TSH, Cortisol</span></div>
+                    <div class="service-item"><i class="fas fa-heartbeat"></i><span data-i18n="srv-4">القلب والأوعية</span><span class="sub">Troponine, D-dimères</span></div>
+                    <div class="service-item"><i class="fas fa-dna"></i><span data-i18n="srv-5">التحاليل الوراثية</span><span class="sub">Panel gène</span></div>
+                    <div class="service-item"><i class="fas fa-flask"></i><span data-i18n="srv-6">الكيمياء الحيوية</span><span class="sub">Glycémie, Créatinine</span></div>
+                    <div class="service-item"><i class="fas fa-baby"></i><span data-i18n="srv-7">صحة الأم والطفل</span><span class="sub">HCG, Rubéole</span></div>
+                    <div class="service-item"><i class="fas fa-stethoscope"></i><span data-i18n="srv-8">الفحوصات الوقائية</span><span class="sub">Bilan annuel</span></div>
+                    <div class="service-item"><i class="fas fa-thermometer-half"></i><span data-i18n="srv-9">المناعة والأمراض</span><span class="sub">VIH, Hépatites</span></div>
+                    <div class="service-item"><i class="fas fa-prescription-bottle-alt"></i><span data-i18n="srv-10">مراقبة الأدوية</span><span class="sub">TDM, Thérapeutique</span></div>
+                    <div class="service-item"><i class="fas fa-microscope"></i><span data-i18n="srv-11">علم الأمراض</span><span class="sub">Cytologie, Histologie</span></div>
+                    <div class="service-item"><i class="fas fa-clinic-medical"></i><span data-i18n="srv-12">استشارات مخبرية</span><span class="sub">Interprétation</span></div>
+                </div>
+            </article>
+
+            <!-- CONTACT -->
+            <article id="contact" class="panel">
+                <div class="section-title">
+                    <i class="fas fa-paper-plane"></i>
+                    <h2 data-i18n="contact-title">تواصل معنا</h2>
+                </div>
+                <div class="contact-flex">
+                    <form action="#" method="post">
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                            <div style="flex:1; min-width:140px;"><input type="text" data-i18n-placeholder="form-name" placeholder="الاسم الكامل" /></div>
+                            <div style="flex:1; min-width:140px;"><input type="email" data-i18n-placeholder="form-email" placeholder="البريد الإلكتروني" /></div>
+                            <div style="flex:100%;"><input type="text" data-i18n-placeholder="form-subject" placeholder="الموضوع" /></div>
+                            <div style="flex:100%;"><textarea rows="3" data-i18n-placeholder="form-message" placeholder="رسالتك ..."></textarea></div>
+                            <div style="flex:100%;"><button class="btn" type="submit"><i class="fas fa-envelope"></i> <span data-i18n="form-send">إرسال الرسالة</span></button></div>
+                        </div>
+                    </form>
+                    <div class="info-side">
+                        <div class="contact-card">
+                            <p><i class="fas fa-map-pin"></i> <span data-i18n="contact-address">القنيطرة، المغرب</span></p>
+                            <p><i class="fas fa-phone"></i> 05 37 35 14 13</p>
+                            <p><i class="fas fa-mobile-alt"></i> 07 08 08 99 60</p>
+                            <p><i class="fas fa-clock"></i> <span data-i18n="contact-hours">الإثنين – السبت 08:00 – 19:00</span></p>
+                            <p><i class="fas fa-envelope"></i> labomaghrebrababi@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- FOOTER -->
+        <div id="footer">
+            <ul class="copyright">
+                <li>&copy; 2026 <span data-i18n="footer-name">مختبر المغرب العربي للتحاليل الطبية</span></li>
+                <li><span data-i18n="footer-design">تصميم:</span> <a href="#">Proo Of Concept</a></li>
+            </ul>
+            <div class="design-credit">Design: Proo Of Concept</div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT: NAV, DARK MODE, LANGUAGE -->
+<script>
+    (function() {
+        // ----- NAVIGATION -----
+        const navLinks = document.querySelectorAll('#nav a');
+        const panels = {
+            home: document.getElementById('home'),
+            work: document.getElementById('work'),
+            contact: document.getElementById('contact')
+        };
+
+        function setActivePanel(id) {
+            Object.keys(panels).forEach(key => {
+                if (panels[key]) panels[key].style.display = 'none';
+            });
+            if (panels[id]) panels[id].style.display = 'block';
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').replace('#', '');
+                if (href === id) link.classList.add('active');
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const target = href.replace('#', '');
+                    if (panels[target]) {
+                        e.preventDefault();
+                        setActivePanel(target);
+                        window.location.hash = target;
+                    }
+                }
+            });
+        });
+
+        const hash = window.location.hash.replace('#', '');
+        if (hash && panels[hash]) setActivePanel(hash);
+        else setActivePanel('home');
+
+        window.addEventListener('hashchange', function() {
+            const h = window.location.hash.replace('#', '');
+            if (h && panels[h]) setActivePanel(h);
+            else setActivePanel('home');
+        });
+
+        // ----- DARK MODE -----
+        const darkToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const darkIcon = darkToggle.querySelector('i');
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkIcon.classList.remove('fa-moon');
+            darkIcon.classList.add('fa-sun');
+        }
+
+        darkToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkIcon.classList.remove('fa-moon');
+                darkIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkIcon.classList.remove('fa-sun');
+                darkIcon.classList.add('fa-moon');
+            }
+        });
+
+        // ----- LANGUAGE SWITCHER -----
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const i18nMap = {
+            ar: {
+                'nav-home': 'الرئيسية',
+                'nav-services': 'الخدمات',
+                'nav-contact': 'اتصل بنا',
+                'home-title': 'مختبر <span>المغرب العربي</span>',
+                'home-subhead': 'للتحاليل الطبية · Laboratoire Maghreb Arabi',
+                'home-doctor': 'د. عاصم الزاكي – اختصاصي البيولوجيا',
+                'home-education': 'خريج كلية الطب والصيدلة بالرباط – داخلي سابق بالمستشفى العسكري محمد الخامس',
+                'services-title': 'خدمات التحاليل الطبية',
+                'services-desc': 'دقة عالية – نتائج موثوقة – تحت إشراف الدكتور عاصم الزاكي',
+                'srv-1': 'التحاليل الدموية',
+                'srv-2': 'البيولوجيا الجزيئية',
+                'srv-3': 'الهرمونات',
+                'srv-4': 'القلب والأوعية',
+                'srv-5': 'التحاليل الوراثية',
+                'srv-6': 'الكيمياء الحيوية',
+                'srv-7': 'صحة الأم والطفل',
+                'srv-8': 'الفحوصات الوقائية',
+                'srv-9': 'المناعة والأمراض',
+                'srv-10': 'مراقبة الأدوية',
+                'srv-11': 'علم الأمراض',
+                'srv-12': 'استشارات مخبرية',
+                'contact-title': 'تواصل معنا',
+                'form-name': 'الاسم الكامل',
+                'form-email': 'البريد الإلكتروني',
+                'form-subject': 'الموضوع',
+                'form-message': 'رسالتك ...',
+                'form-send': 'إرسال الرسالة',
+                'contact-address': 'القنيطرة، المغرب',
+                'contact-hours': 'الإثنين – السبت 08:00 – 19:00',
+                'footer-name': 'مختبر المغرب العربي للتحاليل الطبية',
+                'footer-design': 'تصميم:'
+            },
+            fr: {
+                'nav-home': 'Accueil',
+                'nav-services': 'Services',
+                'nav-contact': 'Contact',
+                'home-title': 'Laboratoire <span>Maghreb Arabi</span>',
+                'home-subhead': 'Analyses Médicales · Laboratoire Maghreb Arabi',
+                'home-doctor': 'Dr. Assem EZZAKI – Spécialiste en Biologie',
+                'home-education': 'Laureat de Faculté de Médecine de Rabat – Ancien Interne à l\'Hôpital Militaire Mohamed V',
+                'services-title': 'Nos Services d\'Analyses',
+                'services-desc': 'Haute précision – Résultats fiables – Sous la supervision du Dr. Assem EZZAKI',
+                'srv-1': 'Analyses sanguines',
+                'srv-2': 'Biologie moléculaire',
+                'srv-3': 'Hormones',
+                'srv-4': 'Cardio-vasculaire',
+                'srv-5': 'Analyses génétiques',
+                'srv-6': 'Biochimie',
+                'srv-7': 'Santé mère-enfant',
+                'srv-8': 'Examens préventifs',
+                'srv-9': 'Immunologie et maladies',
+                'srv-10': 'Suivi thérapeutique',
+                'srv-11': 'Anatomopathologie',
+                'srv-12': 'Consultations biologiques',
+                'contact-title': 'Contactez-nous',
+                'form-name': 'Nom complet',
+                'form-email': 'Email',
+                'form-subject': 'Sujet',
+                'form-message': 'Votre message ...',
+                'form-send': 'Envoyer',
+                'contact-address': 'Kénitra, Maroc',
+                'contact-hours': 'Lundi – Samedi 08:00 – 19:00',
+                'footer-name': 'Laboratoire Maghreb Arabi d\'Analyses Médicales',
+                'footer-design': 'Design:'
+            },
+            en: {
+                'nav-home': 'Home',
+                'nav-services': 'Services',
+                'nav-contact': 'Contact',
+                'home-title': 'Maghreb Arabi <span>Medical Lab</span>',
+                'home-subhead': 'Medical Analyses · Maghreb Arabi Laboratory',
+                'home-doctor': 'Dr. Assem EZZAKI – Clinical Biology Specialist',
+                'home-education': 'Graduate of Rabat Medical School – Former Resident at Mohamed V Military Hospital',
+                'services-title': 'Our Lab Services',
+                'services-desc': 'High accuracy – Reliable results – Supervised by Dr. Assem EZZAKI',
+                'srv-1': 'Hematology',
+                'srv-2': 'Molecular Biology',
+                'srv-3': 'Hormones',
+                'srv-4': 'Cardiovascular',
+                'srv-5': 'Genetic Testing',
+                'srv-6': 'Biochemistry',
+                'srv-7': 'Maternal & Child Health',
+                'srv-8': 'Preventive Exams',
+                'srv-9': 'Immunology & Diseases',
+                'srv-10': 'Drug Monitoring',
+                'srv-11': 'Pathology',
+                'srv-12': 'Lab Consultations',
+                'contact-title': 'Contact Us',
+                'form-name': 'Full Name',
+                'form-email': 'Email',
+                'form-subject': 'Subject',
+                'form-message': 'Your message ...',
+                'form-send': 'Send Message',
+                'contact-address': 'Kénitra, Morocco',
+                'contact-hours': 'Mon – Sat 08:00 – 19:00',
+                'footer-name': 'Maghreb Arabi Medical Analysis Laboratory',
+                'footer-design': 'Design:'
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const dict = i18nMap[lang];
+            if (!dict) return;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) {
+                    if (key === 'home-title') {
+                        el.innerHTML = dict[key];
+                    } else {
+                        el.textContent = dict[key];
+                    }
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (dict[key] !== undefined) {
+                    el.placeholder = dict[key];
+                }
+            });
+
+            langBtns.forEach(btn => btn.classList.remove('active-lang'));
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`)?.classList.add('active-lang');
+
+            if (lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = lang;
+            }
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                setLanguage(lang);
+                localStorage.setItem('preferredLang', lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('preferredLang') || 'ar';
+        setLanguage(savedLang);
+
+        // Fix home-title innerHTML after setLanguage
+        const origSetLang = setLanguage;
+        setLanguage = function(lang) {
+            origSetLang(lang);
+            const dict = i18nMap[lang];
+            if (dict && dict['home-title']) {
+                const el = document.querySelector('[data-i18n="home-title"]');
+                if (el) el.innerHTML = dict['home-title'];
+            }
+        };
+        setLanguage(currentLang);
+
+    })();
+</script>
+</body>
+</html>
