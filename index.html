@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre Dentaire Lyautey - Kénitra</title>
+    <!-- خطوط عصرية ونظيفة مع خط Cairo الأنيق للغة العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;900&family=Playfair+Display:wght@700&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* الوضع الليلي - سحر الألوان الداكنة */
+            --bg-base: #030712;
+            --surface-glass: rgba(15, 23, 42, 0.45);
+            --card-glass: rgba(30, 41, 59, 0.35);
+            --card-hover: rgba(30, 41, 59, 0.55);
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(6, 182, 212, 0.4);
+            --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+            --glow-1: rgba(6, 182, 212, 0.18);
+            --glow-2: rgba(139, 92, 246, 0.15);
+            --glow-3: rgba(59, 130, 246, 0.12);
+        }
+
+        .light-mode {
+            /* الوضع النهار - خلفية لؤلؤية ساحرة */
+            --bg-base: #f1f5f9;
+            --surface-glass: rgba(255, 255, 255, 0.65);
+            --card-glass: rgba(255, 255, 255, 0.55);
+            --card-hover: rgba(255, 255, 255, 0.85);
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --border-glass: rgba(255, 255, 255, 0.6);
+            --border-hover: rgba(2, 132, 199, 0.4);
+            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #7c3aed 100%);
+            --glow-1: rgba(2, 132, 199, 0.12);
+            --glow-2: rgba(124, 58, 237, 0.08);
+            --glow-3: rgba(37, 99, 235, 0.10);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-color);
+            padding-bottom: 50px;
+            font-size: 15px;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Magical Background Mesh & Glowing Blobs */
+        .magic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .magic-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.85;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: 10%;
+            width: 550px;
+            height: 550px;
+            background: var(--glow-1);
+            animation: moveBlob1 12s ease-in-out infinite alternate;
+        }
+
+        .blob-2 {
+            bottom: -15%;
+            right: 5%;
+            width: 650px;
+            height: 650px;
+            background: var(--glow-2);
+            animation: moveBlob2 15s ease-in-out infinite alternate;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
+            width: 500px;
+            height: 500px;
+            background: var(--glow-3);
+            animation: moveBlob3 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveBlob1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 60px) scale(1.15); }
+        }
+
+        @keyframes moveBlob2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-60px, -50px) scale(1.2); }
+        }
+
+        @keyframes moveBlob3 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -40px) scale(1.1); }
+        }
+
+        /* Glassmorphism Navbar */
+        header {
+            background-color: var(--surface-glass);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: url(#logoGrad);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-sub {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-color);
+            letter-spacing: 0.5px;
+        }
+
+        [dir="rtl"] .logo-main {
+            font-family: 'Cairo', sans-serif;
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+        .logo-main span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .control-btn {
+            background-color: var(--card-glass);
+            color: var(--text-color);
+            border: 1px solid var(--border-glass);
+            padding: 7px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover {
+            border-color: #06b6d4;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto 25px auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media(max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.35;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            min-height: 110px;
+            display: inline-block;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .hero-text h1.fade-out {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .hero-text p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-main, .btn-outline {
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-main {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .btn-outline {
+            background: var(--card-glass);
+            color: var(--text-color);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            border-color: #06b6d4;
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism Slider Box */
+        .hero-slider-box {
+            position: relative;
+            height: 330px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Business Card Section */
+        .business-card-section {
+            max-width: 1200px;
+            margin: 25px auto 0 auto;
+            padding: 0 24px;
+        }
+
+        .biz-card {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 22px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .biz-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 45px rgba(6, 182, 212, 0.12);
+        }
+
+        .biz-card-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .biz-badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .biz-card-header h3 {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-color);
+            letter-spacing: -0.2px;
+        }
+
+        .biz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .biz-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: var(--surface-glass);
+            padding: 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border-glass);
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .biz-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .biz-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+        }
+
+        .biz-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .biz-label {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .biz-item p, .biz-item a {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-color);
+            text-decoration: none;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+
+        .biz-item a:hover {
+            color: #06b6d4;
+        }
+
+        /* Bento Grid Services with Increased Transparency & Clear Readable Text */
+        .container {
+            max-width: 1200px;
+            margin: 45px auto 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            margin-bottom: 22px;
+        }
+
+        .section-header h2 {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .bento-card {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            min-height: 290px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* طبقة شفافة تغطي البطاقة كاملة مع زيادة الشفافية (شفافية أعلى لإظهار الصورة بوضوح) */
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.2) 100%);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1;
+            transition: background 0.4s ease;
+        }
+
+        .light-mode .bento-card::before {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%);
+        }
+
+        .bento-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+        }
+
+        /* جعل محتويات البطاقة فوق طبقة الشفافية */
+        .bento-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.25);
+        }
+
+        .bento-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* ظل خفيف لضمان وضوح القراءة مع الشفافية العالية */
+        }
+
+        .light-mode .bento-card h3 {
+            text-shadow: none;
+        }
+
+        .bento-card p {
+            font-size: 13px;
+            color: var(--text-color);
+            opacity: 0.95;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .light-mode .bento-card p {
+            color: var(--text-muted);
+            text-shadow: none;
+            opacity: 1;
+        }
+
+        .bento-action {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-card-action {
+            flex: 1;
+            padding: 9px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-card-action.outline {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border-glass);
+            color: var(--text-color);
+        }
+
+        .light-mode .btn-card-action.outline {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .btn-card-action.outline:hover {
+            border-color: #06b6d4;
+        }
+
+        .btn-card-action.solid {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+        }
+
+        .btn-card-action.solid:hover {
+            opacity: 0.9;
+        }
+
+        /* Reviews & Quality Assurance Section */
+        .reviews-section {
+            max-width: 1200px;
+            margin: 45px auto 0 auto;
+            padding: 0 24px;
+        }
+
+        .reviews-card {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 22px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: border-color 0.3s ease;
+        }
+
+        .reviews-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .reviews-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .rating-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface-glass);
+            padding: 8px 16px;
+            border-radius: 14px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .stars {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .score {
+            font-weight: 700;
+            font-size: 15px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .review-item {
+            background: var(--surface-glass);
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid var(--border-glass);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .review-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .review-item p {
+            font-size: 13px;
+            color: var(--text-color);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .reviewer {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            align-self: flex-end;
+        }
+
+        /* Glassmorphism Footer */
+        footer {
+            max-width: 1200px;
+            margin: 55px auto 0 auto;
+            padding: 22px 24px;
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 13px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(16px);
+            border-radius: 18px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-admin-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-admin-link:hover {
+            color: #06b6d4;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- تعريف تدرج الألوان للشعار SVG -->
+    <svg width="0" height="0">
+        <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="50%" stop-color="#3b82f6" />
+                <stop offset="100%" stop-color="#8b5cf6" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Magical Mesh & Glowing Background Elements -->
+    <div class="magic-bg">
+        <div class="magic-blob blob-1"></div>
+        <div class="magic-blob blob-2"></div>
+        <div class="magic-blob blob-3"></div>
+    </div>
+
+    <!-- Header Navbar -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.8 8.1 9 9 9.8V12C9 13.1 9.9 14 11 14H13C14.1 14 15 13.1 15 12V9.8C15.9 9 16.5 7.8 16.5 6.5C16.5 4 14.5 2 12 2Z"/>
+                        <path d="M9.5 15.5C9.5 15.5 10.5 16.5 12 16.5C13.5 16.5 14.5 15.5 14.5 15.5"/>
+                        <path d="M10 18.5C10 18.5 10.8 19.3 12 19.3C13.2 19.3 14 18.5 14 18.5"/>
+                        <path d="M10.5 21.5H13.5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-sub">CENTRE DENTAIRE</span>
+                    <span class="logo-main" id="logoBrand"><span>LYAUTEY</span></span>
+                </div>
+            </a>
+            <div class="nav-controls">
+                <button class="control-btn" id="langBtn" onclick="toggleLanguage()">AR</button>
+                <button class="control-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section & Dynamic Slider -->
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1 id="heroTitle">Un Sourire Éclatant & Une Santé Dentaire Parfaite</h1>
+            <p data-ar="نقدم لكم أحدث تقنيات طب الأسنان وعلاجات تجميلية متقدمة في بيئة مريحة وعصرية." data-fr="Nous vous offrons les dernières technologies dentaires et des soins esthétiques avancés dans un cadre moderne.">Nous vous offrons les dernières technologies dentaires et des soins esthétiques avancés dans un cadre moderne.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn-main" data-ar="حجز موعد" data-fr="Rendez-vous">Rendez-vous</a>
+                <a href="#" class="btn-outline" data-ar="اكتشف الخدمات" data-fr="Services">Services</a>
+            </div>
+        </div>
+
+        <div class="hero-slider-box">
+            <div class="slide active">
+                <img src="https://i.ibb.co/xSY8wsMw/1788918442857.jpg" alt="Clinic Interior 1">
+            </div>
+            <div class="slide">
+                <img src="https://i.ibb.co/TBxCKfrL/1788918422038.jpg" alt="Clinic Interior 2">
+            </div>
+            <div class="slide">
+                <img src="https://i.ibb.co/0pPDMWXy/1788918455555.jpg" alt="Clinic Interior 3">
+            </div>
+            <div class="slide">
+                <img src="https://i.ibb.co/bM8xWSp3/1788918469285.jpg" alt="Clinic Interior 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Card Section -->
+    <section class="business-card-section">
+        <div class="biz-card">
+            <div class="biz-card-header">
+                <h3 data-ar="طبيب أسنان القنيطرة - مركز ليوطي لطب الأسنان" data-fr="Dentiste Kenitra - Centre Dentaire Lyautey">Dentiste Kenitra - Centre Dentaire Lyautey</h3>
+                <span class="biz-badge" data-ar="عيادة طب الأسنان" data-fr="Cabinet Dentaire">Cabinet Dentaire</span>
+            </div>
+            <div class="biz-grid">
+                <!-- Horaires -->
+                <div class="biz-item">
+                    <div class="biz-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div>
+                        <span class="biz-label" data-ar="أوقات العمل" data-fr="Horaires">Horaires</span>
+                        <p data-ar="مفتوح 24 ساعة / 7 أيام" data-fr="Ouvert 24h/24">Ouvert 24h/24</p>
+                    </div>
+                </div>
+                <!-- Adresse -->
+                <div class="biz-item">
+                    <div class="biz-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <div>
+                        <span class="biz-label" data-ar="العنوان" data-fr="Adresse">Adresse</span>
+                        <p data-ar="المكتب 11، عمارة المركز الطبي، شارع محمد الديوري، القنيطرة 14020" data-fr="Bureau 11, Immeuble Centre Médical, Av. Mohamed Diouri, Kénitra 14020">Bureau 11, Immeuble Centre Médical, Av. Mohamed Diouri, Kénitra 14020</p>
+                    </div>
+                </div>
+                <!-- Website -->
+                <div class="biz-item">
+                    <div class="biz-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="biz-label" data-ar="الموقع الإلكتروني" data-fr="Site Web">Site Web</span>
+                        <p><a href="https://dentiste-kenitra.com" target="_blank">dentiste-kenitra.com</a></p>
+                    </div>
+                </div>
+                <!-- Phone -->
+                <div class="biz-item">
+                    <div class="biz-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="biz-label" data-ar="الهاتف" data-fr="Téléphone">Téléphone</span>
+                        <p><a href="tel:0774288706">07 74 28 87 06</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Services with Full Image Background & Increased Transparency -->
+    <main class="container">
+        <div class="section-header">
+            <h2 data-ar="خدماتنا الطبية المتميزة" data-fr="Nos Services Médicaux">Nos Services Médicaux</h2>
+        </div>
+
+        <div class="bento-grid">
+            <!-- Service 1: Blanchiment Laser -->
+            <div class="bento-card" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80');">
+                <div>
+                    <div class="bento-icon">✨</div>
+                    <h3 data-ar="تبييض الأسنان بالليزر" data-fr="Blanchiment Laser">Blanchiment Laser</h3>
+                    <p data-ar="احصل على ابتسامة بيضاء ناصعة وآمنة تماماً على مينا الأسنان في جلسة واحدة." data-fr="Obtenez un sourire éclatant et sûr pour vos dents en une seule séance.">Obtenez un sourire éclatant et sûr pour vos dents en une seule séance.</p>
+                </div>
+                <div class="bento-action">
+                    <a href="#" class="btn-card-action outline" data-ar="التفاصيل" data-fr="Détails">Détails</a>
+                    <a href="#" class="btn-card-action solid" data-ar="حجز" data-fr="Réserver">Réserver</a>
+                </div>
+            </div>
+
+            <!-- Service 2: Implants Dentaires -->
+            <div class="bento-card" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80');">
+                <div>
+                    <div class="bento-icon">🦷</div>
+                    <h3 data-ar="زراعة الأسنان" data-fr="Implants Dentaires">Implants Dentaires</h3>
+                    <p data-ar="تعويض الأسنان المفقودة بغرسات متينة وطبيعية تعيد لك مظهرك ووظيفتك بالكامل." data-fr="Remplacez vos dents manquantes par des implants durables et naturels.">Remplacez vos dents manquantes par des implants durables et naturels.</p>
+                </div>
+                <div class="bento-action">
+                    <a href="#" class="btn-card-action outline" data-ar="التفاصيل" data-fr="Détails">Détails</a>
+                    <a href="#" class="btn-card-action solid" data-ar="حجز" data-fr="Réserver">Réserver</a>
+                </div>
+            </div>
+
+            <!-- Service 3: Orthodontie -->
+            <div class="bento-card" style="background-image: url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80');">
+                <div>
+                    <div class="bento-icon">🛡️</div>
+                    <h3 data-ar="تقويم الأسنان" data-fr="Orthodontie">Orthodontie</h3>
+                    <p data-ar="حلول تقويمية متطورة (شفافة ومعدنية) لتصحيح إنتظام الأسنان لجميع الأعمار." data-fr="Solutions orthodontiques avancées (transparentes et métalliques) pour tous.">Solutions orthodontiques avancées (transparentes et métalliques) pour tous.</p>
+                </div>
+                <div class="bento-action">
+                    <a href="#" class="btn-card-action outline" data-ar="التفاصيل" data-fr="Détails">Détails</a>
+                    <a href="#" class="btn-card-action solid" data-ar="حجز" data-fr="Réserver">Réserver</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Reviews & Quality Assurance Section -->
+    <section class="reviews-section">
+        <div class="reviews-card">
+            <div class="reviews-header">
+                <div>
+                    <span class="biz-badge" data-ar="آراء المرضى & الجودة" data-fr="Avis & Qualité">Avis & Qualité</span>
+                    <h3 data-ar="ثقة وعناية فائقة نعتز بها" data-fr="Une Confiance et un Soin Exceptionnels">Une Confiance et un Soin Exceptionnels</h3>
+                </div>
+                <div class="rating-box">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <span class="score">4.9 / 5</span>
+                </div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-item">
+                    <p data-ar="خدمة احترافية جداً وعمل متقون، المركز يمتلك أحدث التقنيات ومعاملة راقية." data-fr="Service très professionnel et travail impeccable, le centre dispose d'excellentes technologies et d'un grand professionnalisme.">Service très professionnel et travail impeccable, le centre dispose d'excellentes technologies et d'un grand professionnalisme.</p>
+                    <span class="reviewer" data-ar="- أمين اليعقوبي" data-fr="- Amine Yacoubi">- Amine Yacoubi</span>
+                </div>
+                <div class="review-item">
+                    <p data-ar="أفضل عيادة أسنان في القنيطرة، نظافة، تقنيات حديثة، واحترافية مطلقة في المواعيد." data-fr="Meilleur cabinet dentaire à Kénitra, propreté, technologies modernes et ponctualité absolue.">Meilleur cabinet dentaire à Kénitra, propreté, technologies modernes et ponctualité absolue.</p>
+                    <span class="reviewer" data-ar="- فاطمة الزهراء" data-fr="- Fatima Ezzahra">- Fatima Ezzahra</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p data-ar="&copy; 2026 مركز ليوطي لطب الأسنان - جميع الحقوق محفوظة" data-fr="&copy; 2026 Centre Dentaire Lyautey - Tous droits réservés">&copy; 2026 Centre Dentaire Lyautey - Tous droits réservés</p>
+            <a href="admin.html" class="footer-admin-link" data-ar="لوحة الإدارة" data-fr="Administration">Administration</a>
+        </div>
+    </footer>
+
+    <script>
+        const heroSlogans = [
+            {
+                ar: "ابتسامة مشرقة وصحة فموية متكاملة",
+                fr: "Un Sourire Éclatant & Une Santé Dentaire Parfaite",
+                darkGrad: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+                lightGrad: "linear-gradient(135deg, #0284c7 0%, #2563eb 100%)"
+            },
+            {
+                ar: "أناقة وجهك تبدأ من ثقة ابتسامتك",
+                fr: "L'élégance de votre visage commence par votre sourire",
+                darkGrad: "linear-gradient(135deg, #10b981 0%, #06b6d4 100%)",
+                lightGrad: "linear-gradient(135deg, #059669 0%, #0284c7 100%)"
+            },
+            {
+                ar: "جمال أسنانك يعكس رقي شخصيتك",
+                fr: "La beauté de vos dents reflète votre raffinement",
+                darkGrad: "linear-gradient(135deg, #a855f7 0%, #ec4899 100%)",
+                lightGrad: "linear-gradient(135deg, #9333ea 0%, #db2777 100%)"
+            },
+            {
+                ar: "فن صناعة الابتسامات الساحرة والناصعة",
+                fr: "L'art de créer des sourires éclatants et magiques",
+                darkGrad: "linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%)",
+                lightGrad: "linear-gradient(135deg, #d97706 0%, #e11d48 100%)"
+            },
+            {
+                ar: "ثقة لا توصف بابتسامة طبيعية متألقة",
+                fr: "Une confiance infinie avec un sourire naturel et radieux",
+                darkGrad: "linear-gradient(135deg, #6366f1 0%, #d946ef 100%)",
+                lightGrad: "linear-gradient(135deg, #4f46e5 0%, #c026d3 100%)"
+            },
+            {
+                ar: "رعاية استثنائية لابتسامة تدمج بين الجمال والصحة",
+                fr: "Des soins d'exception pour un sourire alliant beauté et santé",
+                darkGrad: "linear-gradient(135deg, #14b8a6 0%, #6366f1 100%)",
+                lightGrad: "linear-gradient(135deg, #0d9488 0%, #4f46e5 100%)"
+            }
+        ];
+
+        let currentSloganIndex = 0;
+        let currentLang = 'fr';
+
+        function updateHeroTitleDisplay() {
+            const titleEl = document.getElementById('heroTitle');
+            const isLight = document.body.classList.contains('light-mode');
+            const currentItem = heroSlogans[currentSloganIndex];
+
+            titleEl.textContent = currentItem[currentLang];
+            titleEl.style.backgroundImage = isLight ? currentItem.lightGrad : currentItem.darkGrad;
+        }
+
+        function rotateHeroText() {
+            const titleEl = document.getElementById('heroTitle');
+            titleEl.classList.add('fade-out');
+
+            setTimeout(() => {
+                currentSloganIndex = (currentSloganIndex + 1) % heroSlogans.length;
+                updateHeroTitleDisplay();
+                titleEl.classList.remove('fade-out');
+            }, 400);
+        }
+
+        setInterval(rotateHeroText, 4500);
+
+        // Hero Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 4000);
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const btn = document.getElementById('themeBtn');
+            btn.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+            updateHeroTitleDisplay();
+        }
+
+        // Language Toggle Logic (FR / AR)
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'ar' : 'fr';
+            const langBtn = document.getElementById('langBtn');
+            const htmlRoot = document.getElementById('htmlRoot');
+            const logoBrand = document.getElementById('logoBrand');
+            
+            langBtn.textContent = currentLang === 'fr' ? 'AR' : 'FR';
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            htmlRoot.setAttribute('lang', currentLang);
+
+            if (currentLang === 'ar') {
+                logoBrand.innerHTML = '<span>ليوطي</span>';
+            } else {
+                logoBrand.innerHTML = '<span>LYAUTEY</span>';
+            }
+
+            updateHeroTitleDisplay();
+
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                const val = el.getAttribute(`data-${currentLang}`);
+                if (val) el.textContent = val;
+            });
+        }
+
+        updateHeroTitleDisplay();
+    </script>
+</body>
+</html>
